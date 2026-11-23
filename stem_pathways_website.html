@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM Pathways | Explore Your Future</title>
+<style>
+:root{--navy:#0b1f4d;--blue:#1d4ed8;--cyan:#38bdf8;--pink:#93c5fd;--ink:#102044;--muted:#526783;--paper:#f0f6ff;--white:#fff;--line:#d8e6fb;--green:#15803d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+header{background:linear-gradient(120deg,#071a42,#1648b8 58%,#2498e8);color:white;padding:22px max(5vw,20px) 76px}
+nav{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.brand{font-weight:850;letter-spacing:.08em;font-size:1.05rem}.navlinks{display:flex;gap:18px;flex-wrap:wrap}.navlinks a{color:#eaf4ff;text-decoration:none;font-size:.92rem}.navlinks a:hover{text-decoration:underline}
+.hero{max-width:1120px;margin:65px auto 0;display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:#bfdbfe}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.04;margin:14px 0 20px;max-width:750px}.hero p{max-width:650px;color:#e0edff;font-size:1.08rem}.hero-card{background:#ffffff18;border:1px solid #ffffff40;border-radius:24px;padding:25px;backdrop-filter:blur(8px)}.hero-card .orbit{font-size:4rem;text-align:center}.hero-card h3{margin:5px 0;text-align:center}.hero-card p{text-align:center;font-size:.92rem;margin:0}
+.button{display:inline-block;border:0;border-radius:12px;padding:12px 18px;font-weight:750;text-decoration:none;cursor:pointer;background:var(--blue);color:white}.button.light{background:white;color:#1d4ed8;margin-top:12px}.button.secondary{background:#eaf1ff;color:#1d4ed8}.button.small{padding:8px 12px;font-size:.85rem}
+main{max-width:1120px;margin:auto;padding:0 22px 70px}.section{padding:62px 0 8px;scroll-margin-top:20px}.section-head{max-width:760px;margin-bottom:25px}.kicker{color:#2563eb;font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;font-weight:850}.section h2{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.15;margin:8px 0 12px;color:var(--navy)}.lead{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 8px 25px #17255408}.card h3{margin:8px 0 7px;color:var(--navy)}.card p{margin:0;color:var(--muted);font-size:.94rem}.icon{font-size:1.8rem}.tag{display:inline-block;margin-top:13px;padding:5px 9px;border-radius:999px;background:#e3efff;color:#1746ad;font-size:.76rem;font-weight:750}
+.note{background:#e8f2ff;border-left:4px solid var(--blue);padding:16px 18px;border-radius:10px;color:#334155;margin-top:20px}
+.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.course{background:white;border:1px solid var(--line);border-radius:15px;padding:17px 19px;display:flex;gap:14px}.course .icon{font-size:1.65rem}.course h3{margin:0 0 4px;font-size:1.04rem}.course p{margin:0;color:var(--muted);font-size:.9rem}
+.steps{counter-reset:step;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{background:white;border:1px solid var(--line);border-radius:16px;padding:20px}.step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#d7e8ff;color:#1746ad;font-weight:850}.step h3{margin:12px 0 5px}.step p{margin:0;color:var(--muted);font-size:.92rem}
+.quiz-wrap{background:white;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 35px #1725540a}.quiz-top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.progress{height:8px;background:#e8eef9;border-radius:9px;overflow:hidden;margin:15px 0 23px}.progress span{display:block;height:100%;background:linear-gradient(90deg,#1746c8,#38bdf8);width:0;transition:width .25s}.question{font-size:1.15rem;font-weight:780;color:var(--navy);margin:10px 0 15px}.answers{display:grid;gap:10px}.answer{border:1px solid #dbe3f1;background:#fff;border-radius:12px;padding:12px 14px;text-align:left;cursor:pointer;font:inherit}.answer:hover{border-color:#60a5fa;background:#f8fbff}.answer.selected{border-color:#2563eb;background:#eff6ff}.answer.correct{border-color:#16a34a;background:#f0fdf4}.answer.wrong{border-color:#dc2626;background:#fef2f2}.feedback{min-height:28px;margin:12px 0;color:var(--muted);font-size:.93rem}.quiz-actions{display:flex;gap:10px;flex-wrap:wrap}.result{font-size:1.2rem;font-weight:800;color:var(--navy);margin:10px 0}
+.editbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:10px 18px;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 3px 12px #1725540a}.editbar span{font-size:.85rem;color:var(--muted)}body.editing [contenteditable="true"]{outline:2px dashed #60a5fa;outline-offset:4px;border-radius:4px;background:#eff6ff66}body.editing [contenteditable="true"]:focus{outline:2px solid #2563eb;background:#eff6ff}
+footer{background:#071a42;color:#cbd5e1;padding:28px 22px;text-align:center;font-size:.9rem}footer strong{color:white}
+@media(max-width:760px){.hero{grid-template-columns:1fr;margin-top:42px}.hero-card{max-width:420px}.grid,.steps{grid-template-columns:1fr 1fr}.course-grid{grid-template-columns:1fr}.navlinks{gap:10px}}
+@media(max-width:500px){.grid,.steps{grid-template-columns:1fr}.hero h1{font-size:2.7rem}.section{padding-top:46px}.quiz-wrap{padding:17px}}
+</style>
+</head>
+<body>
+<header>
+  <nav><div class="brand">✦ STEM PATHWAYS</div><div class="navlinks">
+    <a href="#about">About STEM</a><a href="#courses">Courses</a><a href="#careers">Careers</a><a href="#quiz">Quiz & Exam</a>
+  </div></nav>
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Science · Technology · Engineering · Mathematics</div>
+      <h1>Think bigger.<br>Explore STEM.</h1>
+      <p>Discover what the STEM strand is, explore college courses you may pursue, and test what you know with a fun trivia quiz and practice exam.</p>
+      <a class="button light" href="#courses">Explore courses ↓</a>
+    </div>
+    <div class="hero-card"><div class="orbit">🧬 🚀 🔬</div><h3>Your ideas can shape the future.</h3><p>Ask questions, investigate problems, build solutions, and keep learning.</p></div>
+  </div>
+</header>
+
+<div class="editbar">
+  <span id="editStatus">Website is in viewing mode.</span>
+  <button class="button small" id="editToggle">✎ Edit website text</button>
+  <button class="button small secondary" id="saveBtn">Save changes</button>
+  <button class="button small secondary" id="resetBtn">Reset text</button>
+</div>
+
+<main>
+<section class="section" id="about">
+  <div class="section-head"><div class="kicker">01 / Get to know the strand</div><h2>What is the STEM strand?</h2>
+  <p class="lead" contenteditable="false">STEM stands for Science, Technology, Engineering, and Mathematics. In Senior High School, it is an academic strand that develops students' knowledge and skills in scientific ideas, mathematical reasoning, research, and problem-solving. It is a strong foundation for many science- and technology-related college programs.</p></div>
+  <div class="grid">
+    <article class="card"><div class="icon">🔬</div><h3>Science</h3><p contenteditable="false">Explore living things, matter, energy, the environment, and how the natural world works through observation and experiments.</p><span class="tag">Discover & investigate</span></article>
+    <article class="card"><div class="icon">💻</div><h3>Technology</h3><p contenteditable="false">Learn how digital tools, computer systems, and innovation can help people communicate and solve real-world problems.</p><span class="tag">Create & innovate</span></article>
+    <article class="card"><div class="icon">⚙️</div><h3>Engineering</h3><p contenteditable="false">Apply science and mathematics to design, test, and improve structures, machines, processes, and systems.</p><span class="tag">Design & build</span></article>
+    <article class="card"><div class="icon">📐</div><h3>Mathematics</h3><p contenteditable="false">Use numbers, patterns, equations, statistics, and logical reasoning to understand and solve problems.</p><span class="tag">Analyze & calculate</span></article>
+    <article class="card"><div class="icon">🧪</div><h3>Research</h3><p contenteditable="false">Ask meaningful questions, gather evidence, analyze information, and communicate conclusions.</p><span class="tag">Question & explain</span></article>
+    <article class="card"><div class="icon">🌏</div><h3>Real-world impact</h3><p contenteditable="false">Connect classroom learning to health, the environment, transportation, communication, and community needs.</p><span class="tag">Learn with purpose</span></article>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="section-head"><div class="kicker">02 / College possibilities</div><h2>What courses can a STEM student take?</h2>
+  <p class="lead" contenteditable="false">STEM can prepare you for a wide range of college programs. Your best choice depends on your interests, strengths, career goals, and the admission requirements of each college or university.</p></div>
+  <div class="course-grid">
+    <article class="course"><div class="icon">🩺</div><div><h3>Health & Medical Sciences</h3><p contenteditable="false">BS Nursing, BS Medical Technology / Medical Laboratory Science, BS Pharmacy, BS Physical Therapy, BS Occupational Therapy, BS Biology, and Doctor of Medicine (after a bachelor's degree and required admission).</p></div></article>
+    <article class="course"><div class="icon">🛠️</div><div><h3>Engineering & Architecture</h3><p contenteditable="false">BS Civil, Mechanical, Electrical, Electronics, Chemical, Computer, Industrial, or Agricultural Engineering; BS Architecture.</p></div></article>
+    <article class="course"><div class="icon">🖥️</div><div><h3>Computing & Technology</h3><p contenteditable="false">BS Computer Science, BS Information Technology, BS Information Systems, BS Data Science, and other computing-related programs.</p></div></article>
+    <article class="course"><div class="icon">🌿</div><div><h3>Natural & Environmental Sciences</h3><p contenteditable="false">BS Chemistry, BS Physics, BS Mathematics, BS Statistics, BS Environmental Science, BS Geology, BS Meteorology, and BS Marine Biology.</p></div></article>
+    <article class="course"><div class="icon">🌾</div><div><h3>Agriculture & Food Sciences</h3><p contenteditable="false">BS Agriculture, BS Forestry, BS Fisheries, BS Food Technology, BS Nutrition and Dietetics, and related programs.</p></div></article>
+    <article class="course"><div class="icon">✈️</div><div><h3>Other STEM-related fields</h3><p contenteditable="false">BS Aviation-related programs, BS Mathematics Education, science education, and specialized applied-science programs, depending on the institution.</p></div></article>
+  </div>
+  <div class="note"><strong>Important:</strong> Being a STEM student does not automatically guarantee admission to a particular course. Many colleges accept applicants from different SHS strands, while some programs may have prerequisite subjects, entrance exams, grade requirements, or bridging courses. Always check the school's current admission rules.</div>
+</section>
+
+<section class="section" id="careers">
+  <div class="section-head"><div class="kicker">03 / Where can it lead?</div><h2>Explore possible career paths</h2><p class="lead">A college course can lead to different jobs. These are examples—not a fixed list of what you must become.</p></div>
+  <div class="grid">
+    <article class="card"><div class="icon">🧑‍⚕️</div><h3>Healthcare</h3><p>Doctor, nurse, pharmacist, medical laboratory scientist, physical therapist, or nutritionist-dietitian.</p></article>
+    <article class="card"><div class="icon">🏗️</div><h3>Engineering & design</h3><p>Civil, electrical, mechanical, chemical, or computer engineer; architect; or design specialist.</p></article>
+    <article class="card"><div class="icon">👩‍💻</div><h3>Technology</h3><p>Software developer, data analyst, cybersecurity professional, IT specialist, or systems analyst.</p></article>
+    <article class="card"><div class="icon">🔭</div><h3>Research & science</h3><p>Researcher, chemist, physicist, biologist, geologist, or laboratory specialist.</p></article>
+    <article class="card"><div class="icon">🌱</div><h3>Environment & agriculture</h3><p>Environmental scientist, agriculturist, food technologist, forester, or fisheries specialist.</p></article>
+    <article class="card"><div class="icon">📚</div><h3>Education</h3><p>Science, mathematics, or technology teacher; academic researcher; or learning-material developer.</p></article>
+  </div>
+</section>
+
+<section class="section" id="tips">
+  <div class="section-head"><div class="kicker">04 / Choose with confidence</div><h2>How to choose your college course</h2><p class="lead">You do not need to decide your entire future right away. Start by exploring and comparing.</p></div>
+  <div class="steps">
+    <article class="step"><h3>Know your interests</h3><p>Which subjects and activities do you enjoy—biology, math, computers, designing, or helping people?</p></article>
+    <article class="step"><h3>Research programs</h3><p>Read course descriptions, subject lists, possible careers, costs, scholarships, and admission requirements.</p></article>
+    <article class="step"><h3>Compare your options</h3><p>Talk with teachers, guidance counselors, students, and professionals. Make a practical shortlist.</p></article>
+  </div>
+</section>
+
+<section class="section" id="quiz">
+  <div class="section-head"><div class="kicker">05 / Check what you know</div><h2>STEM trivia & practice exam</h2><p class="lead">Choose a mode, answer each question, and get your score with explanations. These are practice questions, not an official school examination.</p></div>
+  <div class="quiz-wrap">
+    <div class="quiz-top"><div><strong>🧠 STEM Challenge</strong><div style="color:#64748b;font-size:.9rem" id="modeCaption">Quick trivia · 5 questions</div></div>
+      <div><button class="button small secondary" id="triviaMode">Trivia</button> <button class="button small secondary" id="examMode">Practice exam</button></div>
+    </div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div id="quizArea"><div class="question">Ready to test your STEM knowledge?</div><p class="lead">Select Trivia for a short warm-up or Practice exam for a longer challenge.</p><button class="button" id="startBtn">Start quiz</button></div>
+  </div>
+</section>
+</main>
+<footer><strong>STEM PATHWAYS</strong><br>Explore your interests. Build your knowledge. Shape your future.<br><span>Educational guide for Senior High School students · Course availability and admission rules vary by institution.</span></footer>
+
+<script>
+const originalText = new Map();
+document.querySelectorAll('[contenteditable="false"]').forEach((el,i)=>originalText.set(i,el.innerHTML));
+let editing=false;
+const editToggle=document.getElementById('editToggle'), editStatus=document.getElementById('editStatus');
+editToggle.addEventListener('click',()=>{
+  editing=!editing;document.body.classList.toggle('editing',editing);
+  document.querySelectorAll('[contenteditable]').forEach(el=>el.contentEditable=editing?'true':'false');
+  editToggle.textContent=editing?'✓ Finish editing':'✎ Edit website text';
+  editStatus.textContent=editing?'Edit mode: click any highlighted text to change it.':'Website is in viewing mode.';
+});
+document.getElementById('saveBtn').addEventListener('click',()=>{
+  const data=[...document.querySelectorAll('[contenteditable]')].map(el=>el.innerHTML);
+  localStorage.setItem('stemPathwaysText',JSON.stringify(data));
+  editStatus.textContent='Changes saved in this browser.';
+});
+function loadSaved(){try{const data=JSON.parse(localStorage.getItem('stemPathwaysText'));if(data){document.querySelectorAll('[contenteditable]').forEach((el,i)=>{if(data[i]!==undefined)el.innerHTML=data[i]})}}catch(e){}}
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('Reset all editable text to the original website wording?')){localStorage.removeItem('stemPathwaysText');location.reload()}});
+loadSaved();
+
+const trivia=[
+{q:'What does the letter “T” in STEM stand for?',a:['Training','Technology','Theory','Testing'],c:1,e:'STEM stands for Science, Technology, Engineering, and Mathematics.'},
+{q:'Which branch of science mainly studies living organisms?',a:['Biology','Geology','Astronomy','Physics'],c:0,e:'Biology is the study of life and living organisms.'},
+{q:'Which tool is commonly used to measure temperature?',a:['Barometer','Thermometer','Ammeter','Ruler'],c:1,e:'A thermometer measures temperature.'},
+{q:'What is the basic unit of life?',a:['Atom','Tissue','Cell','Organ'],c:2,e:'The cell is the smallest structural and functional unit of living organisms.'},
+{q:'Which field focuses on designing and building structures, machines, and systems?',a:['Literature','Engineering','History','Linguistics'],c:1,e:'Engineering applies math and science to design and solve practical problems.'}
+];
+const exam=[
+{q:'A student wants to identify an unknown substance by measuring its mass and volume. Which property can be calculated?',a:['Density','Temperature','Electrical current','Frequency'],c:0,e:'Density is mass divided by volume.'},
+{q:'Which molecule carries hereditary information in most living organisms?',a:['ATP','DNA','Glucose','Water'],c:1,e:'DNA stores genetic instructions in most living organisms.'},
+{q:'A ramp helps move a heavy object to a higher level using less force over a longer distance. Which simple machine is it?',a:['Pulley','Lever','Inclined plane','Wheel and axle'],c:2,e:'A ramp is an inclined plane, a simple machine that changes the direction and magnitude of the applied force.'},
+{q:'What is the SI unit of electric current?',a:['Volt','Ohm','Watt','Ampere'],c:3,e:'Electric current is measured in amperes (A).'},
+{q:'Which mathematical concept describes the average value found by adding data and dividing by the number of values?',a:['Median','Mean','Mode','Range'],c:1,e:'The arithmetic mean is the sum of the values divided by the number of values.'},
+{q:'Which college program is most directly associated with designing software and studying computation?',a:['Computer Science','BS Nursing','BS Forestry','BS Architecture'],c:0,e:'Computer Science focuses on computation, algorithms, programming, and related foundations.'},
+{q:'Which process do plants use to convert light energy into chemical energy?',a:['Respiration','Fermentation','Photosynthesis','Evaporation'],c:2,e:'Photosynthesis uses light energy to help produce sugars from carbon dioxide and water.'},
+{q:'A researcher repeats an experiment under the same conditions. What does this mainly help assess?',a:['Reliability of results','The color of materials','The age of the researcher','The popularity of the topic'],c:0,e:'Repeated trials help determine whether results are consistent and reliable.'},
+{q:'Which branch of physics studies motion and the forces that cause it?',a:['Optics','Mechanics','Thermodynamics','Acoustics'],c:1,e:'Mechanics studies motion, forces, and the behavior of physical systems.'},
+{q:'Which is an example of a STEM-related environmental science task?',a:['Analyzing water quality','Writing a fictional poem','Memorizing a play script','Designing a fashion trend'],c:0,e:'Water-quality analysis uses scientific methods to assess environmental conditions.'}
+];
+let questions=trivia,idx=0,score=0,locked=false,answers=[];
+const area=document.getElementById('quizArea'),bar=document.getElementById('progressBar'),caption=document.getElementById('modeCaption');
+function setMode(mode){questions=mode==='exam'?exam:trivia;caption.textContent=mode==='exam'?'Practice exam · 10 questions':'Quick trivia · 5 questions';start();}
+function start(){idx=0;score=0;locked=false;answers=[];render();}
+function render(){
+  locked=false;bar.style.width=(idx/questions.length*100)+'%';
+  const q=questions[idx];
+  area.innerHTML=`<div style="font-size:.85rem;color:#64748b;font-weight:700">QUESTION ${idx+1} OF ${questions.length}</div><div class="question">${q.q}</div><div class="answers">${q.a.map((a,i)=>`<button class="answer" data-i="${i}">${String.fromCharCode(65+i)}. ${a}</button>`).join('')}</div><div class="feedback" id="feedback" aria-live="polite"></div><div class="quiz-actions"><button class="button" id="nextBtn" disabled>${idx===questions.length-1?'See result':'Next question →'}</button></div>`;
+  area.querySelectorAll('.answer').forEach(btn=>btn.addEventListener('click',()=>choose(Number(btn.dataset.i))));
+  document.getElementById('nextBtn').addEventListener('click',()=>{if(!locked)return;idx++;if(idx<questions.length)render();else result()});
+}
+function choose(n){
+ if(locked)return;locked=true;const q=questions[idx];const correct=n===q.c;if(correct)score++;answers.push({chosen:n,correct:q.c});
+ area.querySelectorAll('.answer').forEach((b,i)=>{b.disabled=true;if(i===q.c)b.classList.add('correct');if(i===n&&!correct)b.classList.add('wrong')});
+ document.getElementById('feedback').textContent=(correct?'Correct! ':'Not quite. ')+q.e;
+ const next=document.getElementById('nextBtn');next.disabled=false;bar.style.width=((idx+1)/questions.length*100)+'%';
+}
+function result(){
+ const pct=Math.round(score/questions.length*100);
+ let msg=pct===100?'Outstanding work!':pct>=70?'Great effort! Keep building your STEM knowledge.':pct>=50?'Good start. Review the explanations and try again.':'Keep learning—every scientist starts with questions.';
+ area.innerHTML=`<div class="result">You scored ${score} out of ${questions.length} (${pct}%).</div><p>${msg}</p><div class="note">Remember: a quiz score is only a snapshot of what you know today. Learning and practice matter more than a perfect score.</div><div class="quiz-actions" style="margin-top:18px"><button class="button" id="retryBtn">Try again</button><button class="button secondary" id="reviewBtn">Review answers</button></div>`;
+ bar.style.width='100%';document.getElementById('retryBtn').onclick=start;document.getElementById('reviewBtn').onclick=review;
+}
+function review(){
+ area.innerHTML='<h3>Answer review</h3>'+questions.map((q,i)=>`<div class="card" style="margin:12px 0"><strong>${i+1}. ${q.q}</strong><p style="margin:6px 0;color:#15803d">Answer: ${q.a[q.c]}</p><p>${q.e}</p></div>`).join('')+'<button class="button" id="again">Try again</button>';
+ document.getElementById('again').onclick=start;
+}
+document.getElementById('triviaMode').onclick=()=>setMode('trivia');
+document.getElementById('examMode').onclick=()=>setMode('exam');
+document.getElementById('startBtn').onclick=()=>start();
+</script>
+</body>
+</html>
